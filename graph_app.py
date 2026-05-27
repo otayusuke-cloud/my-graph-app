@@ -3,18 +3,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import io
-import platform
 
 # ==========================================
-# 日本語フォントの設定（文字化け対策）
+# 最新Python対応：文字化け対策（PC＆Webサーバー両対応）
 # ==========================================
-os_name = platform.system()
-if os_name == "Windows":
-    plt.rcParams['font.family'] = 'MS Gothic'
-elif os_name == "Darwin":
-    plt.rcParams['font.family'] = 'AppleGothic'
-else:
-    plt.rcParams['font.family'] = 'sans-serif'
+import matplotlib.font_manager as fm
+# サーバー（Linux）用：標準的な日本語フォントを優先し、なければWindowsフォントを当てる
+plt.rcParams['font.family'] = ['sans-serif', 'MS Gothic', 'Meiryo', 'AppleGothic']
 
 # ページの設定（iPadやPCの画面幅に自動追従）
 st.set_page_config(page_title="統計解析＆マルチグラフ作成アプリ", layout="wide")
